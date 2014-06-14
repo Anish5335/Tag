@@ -1,0 +1,157 @@
+import zen.core.Zen;
+import zen.shape.Circle;
+
+
+public class Tag {
+
+
+	public static void main(String[] args) {
+		Zen.connect("jar");
+
+		Circle anish;
+		Circle nathan;
+		Circle anoop;
+		Circle kaushik;
+		Circle kaushal;
+		Circle keshav;
+		int it = 1;
+
+		anish = new Circle(40);
+		anish.setX(200);
+		anish.setY(300);
+		anish.setColor("orange");
+		Zen.write("anishscore", 0);
+
+		nathan = new Circle(40);
+		nathan.setColor("red");
+		anoop = new Circle(40);
+		anoop.setColor("gray");
+		kaushik = new Circle(40);
+		kaushik.setColor("light green");
+		kaushal = new Circle(40);
+		kaushal.setColor("magenta");
+		keshav = new Circle(40);
+		keshav.setColor("blue");
+
+
+
+
+		Zen.create(1000, 1000);
+
+		while ( 2 < 3 ) {
+			it = Zen.readInt("it");
+
+			if (it == 1) {
+				kaushal.setColor("white");
+			}
+			else {
+				kaushal.setColor("magenta");
+			}
+
+			if (it == 2) {
+				keshav.setColor("white");
+			}
+			else {
+				keshav.setColor("blue");
+			}
+
+			if (it == 3) {
+				anoop.setColor("white");
+			}
+			else {
+				anoop.setColor("gray");
+			}
+
+			if (it == 4) {
+				kaushik.setColor("white");
+			}
+			else {
+				kaushik.setColor("light green");
+			}
+
+			if (it == 5) {
+				int score = Zen.readInt("anishscore");
+				score = score + 1;
+				Zen.write("anishscore", score);
+				
+				anish.setColor("white");
+				if ( anish.distanceTo(kaushal) < 40 ) {
+					Zen.write("it", 1);
+				}
+				}
+				if ( anish.distanceTo(keshav) < 40 ) {
+					Zen.write("it", 2);
+				}
+				if ( anish.distanceTo(anoop) < 40 ) {
+					Zen.write("it", 3);
+				}
+				if ( anish.distanceTo(nathan) < 40 ) {
+					Zen.write("it", 6);
+				}
+				if ( anish.distanceTo(kaushik) < 40 ) {
+					Zen.write("it", 4);
+				}
+				else {
+					anish.setColor("orange");
+				}
+				if (it == 6) {
+					nathan.setColor("white");
+				}
+				else {
+					nathan.setColor("red");
+				}
+
+				Zen.setBackground("green"); 
+				Zen.setColor("white");
+				Zen.drawText("Kaushal: " + Zen.readInt("kaushalscore"), 850, 25);
+				Zen.drawText("Keshav: " + Zen.readInt("keshavscore"), 850, 50);
+				Zen.drawText("Anoop: " + Zen.readInt("anoopscore"), 850, 75);
+				Zen.drawText("Anish: " + Zen.readInt("anishscore"), 850, 100);
+				Zen.drawText("Nathan: " + Zen.readInt("nathanscore"), 850, 125);
+				Zen.drawText("Kaushik: " + Zen.readInt("kaushikscore"), 850, 150);
+				
+				
+				anish.draw();
+				nathan.draw();
+				kaushal.draw();
+				kaushik.draw();
+				anoop.draw();
+				keshav.draw();
+
+
+				if ( Zen.isKeyPressed("right") && anish.getX() < 985 ) {
+					anish.changeX(15);
+				}
+				if ( Zen.isKeyPressed("down") && anish.getY() < 985 ) {
+					anish.changeY(15);
+				}
+				if ( Zen.isKeyPressed("left") && anish.getX() > 15 ) {
+					anish.changeX(-15);
+				}
+				if ( Zen.isKeyPressed("up") && anish.getY() > 15 ) {
+					anish.changeY(-15);
+
+				}
+
+				Zen.write("anish x", anish.getX() );
+				Zen.write("anish y", anish.getY() );
+
+				nathan.setX( Zen.readInt("nathanx") );
+				nathan.setY( Zen.readInt("nathany") );
+				anoop.setX( Zen.readInt("anoopx") );
+				anoop.setY( Zen.readInt("anoopy") );
+				kaushik.setX( Zen.readInt("kaushikx") );
+				kaushik.setY( Zen.readInt("kaushiky") );
+				kaushal.setX( Zen.readInt("kaushalx") );
+				kaushal.setY( Zen.readInt("kaushaly") );
+				keshav.setX( Zen.readInt("keshavx") );
+				keshav.setY( Zen.readInt("keshavy") );
+
+				Zen.buffer(33);
+
+
+			}
+
+		}
+
+	}
